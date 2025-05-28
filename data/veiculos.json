@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "marca": "Chevrolet",
+    "modelo": "Onix Plus LTZ",
+    "ano": 2023,
+    "quilometragem": "15.000 km",
+    "cor": "Preto",
+    "cambio": "Automático",
+    "combustivel": "Flex",
+    "preco": "R$ 95.000",
+    "descricaoDetalhada": "Excelente carro, único dono, revisado e com garantia de fábrica. Completo, com multimídia e câmera de ré. Ótima opção para a cidade e viagens.",
+    "imagens": [
+      "img/carros/onix-plus-1.jpg",
+      "img/carros/onix-plus-2.jpg",
+      "img/carros/onix-plus-3.jpg",
+      "img/carros/onix-plus-4.jpg"
+    ],
+    "contatoWhatsApp": "5591987654321",
+    "contatoTelefone": "1133331111"
+  },
+  {
+    "id": 2,
+    "marca": "Hyundai",
+    "modelo": "Creta Limited",
+    "ano": 2022,
+    "quilometragem": "30.000 km",
+    "cor": "Branco Perolizado",
+    "cambio": "Automático",
+    "combustivel": "Flex",
+    "preco": "R$ 115.500",
+    "descricaoDetalhada": "SUV compacto com design moderno e ótimo desempenho. Versão Limited com teto solar panorâmico, bancos de couro e carregador de celular por indução. Perfeito para a família.",
+    "imagens": [
+      "img/carros/creta-1.jpg",
+      "img/carros/creta-2.jpg",
+      "img/carros/creta-3.jpg"
+    ],
+    "contatoWhatsApp": "5592984032627",
+    "contatoTelefone": "1133332222"
+  },
+  {
+    "id": 3,
+    "marca": "Toyota",
+    "modelo": "Corolla Altis Hybrid",
+    "ano": 2024,
+    "quilometragem": "5.000 km",
+    "cor": "Cinza Lunar",
+    "cambio": "Automático (CVT)",
+    "combustivel": "Híbrido (Flex)",
+    "preco": "R$ 170.000",
+    "descricaoDetalhada": "A mais nova tecnologia híbrida da Toyota. Consumo excelente, conforto superior e todos os itens de segurança da versão Altis. Estado de zero km.",
+    "imagens": [
+      "img/carros/corolla-hybrid-1.jpg",
+      "img/carros/corolla-hybrid-2.jpg",
+      "img/carros/corolla-hybrid-3.jpg",
+      "img/carros/corolla-hybrid-4.jpg"
+    ],
+    "contatoWhatsApp": "5511999993333",
+    "contatoTelefone": "1133333333"
+  }
+]

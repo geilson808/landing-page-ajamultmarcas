@@ -1,0 +1,486 @@
+/* GERAIS E RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* CABEÇALHO */
+header {
+    background: #2c3e50; /* Azul escuro */
+    color: #fff;
+    padding: 1rem 0;
+    border-bottom: 5px solid #e74c3c; /* Detalhe vermelho */
+    position: sticky; /* Fixa o cabeçalho no topo ao rolar */
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #e74c3c; /* Cor do título */
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #e74c3c; /* Cor de destaque ao passar o mouse */
+}
+
+/* SEÇÃO HERO (BANNER PRINCIPAL) */
+.hero-section {
+    background: url('../img/hero-bg.jpg') no-repeat center center/cover; /* Imagem de fundo - CRIE ESSA IMAGEM */
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    height: 60vh; /* Altura da seção */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Adiciona um overlay escuro para melhorar a legibilidade do texto */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay preto semi-transparente */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: fadeInDown 1s ease-out; /* Animação do animate.css */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out 0.5s; /* Animação com delay */
+}
+
+/* BOTÃO PRIMÁRIO */
+.btn-primary {
+    display: inline-block;
+    background: #e74c3c; /* Cor de destaque */
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: zoomIn 1s ease-out 1s; /* Animação com delay */
+}
+
+.btn-primary:hover {
+    background-color: #c0392b;
+    transform: translateY(-3px); /* Efeito de elevação */
+}
+
+/* SEÇÃO VEÍCULOS */
+.veiculos-section, .about-section, .contact-section {
+    padding: 60px 0;
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.veiculos-section h2, .about-section h2, .contact-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+}
+
+.veiculos-section h2::after, .about-section h2::after, .contact-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #e74c3c;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.grid-carros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo, 300px min */
+    gap: 30px;
+}
+
+.car-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.car-card img {
+    width: 100%;
+    height: 200px; /* Altura fixa para as imagens dos cartões */
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    display: block;
+    margin-bottom: 15px;
+}
+
+.car-card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #34495e;
+}
+
+.car-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.car-card .preco {
+    font-size: 1.6rem;
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 15px 0 20px;
+}
+
+.btn-ver-detalhes {
+    background: #3498db; /* Azul */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ver-detalhes:hover {
+    background-color: #2980b9;
+}
+
+/* SEÇÕES SOBRE E CONTATO */
+.about-section p, .contact-section p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* RODAPÉ */
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* MODAL (POP-UP) */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; /* Fixado na tela */
+    z-index: 1001; /* Fica acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite rolagem se o conteúdo for muito grande */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    padding-top: 60px; /* Espaço do topo */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% do topo e centralizado horizontalmente */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px; /* Largura máxima */
+    border-radius: 10px;
+    position: relative;
+    animation: fadeIn 0.5s; /* Animação de entrada */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-details h2 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#modal-details .modal-preco {
+    font-size: 2rem;
+    color: #e74c3c;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#modal-details p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: left; /* Detalhes alinhados à esquerda */
+}
+
+/* Galeria de Imagens no Modal */
+.modal-gallery {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-gallery .main-modal-image {
+    width: 100%;
+    max-height: 450px; /* Altura máxima para a imagem principal */
+    object-fit: contain; /* Garante que a imagem inteira seja visível */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-gallery .thumbnail-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Quebra linha se houver muitas miniaturas */
+}
+
+.modal-gallery .thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.modal-gallery .thumbnail:hover {
+    border-color: #e74c3c;
+    transform: scale(1.05);
+}
+
+/* Botões de Contato no Modal */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Para responsividade em telas menores */
+}
+
+.modal-buttons a {
+    display: flex;
+    align-items: center;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-whatsapp {
+    background-color: #25D366; /* Verde WhatsApp */
+    color: #fff;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1DA851;
+    transform: translateY(-3px);
+}
+
+.btn-telefone {
+    background-color: #3498db; /* Azul */
+    color: #fff;
+}
+
+.btn-telefone:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+}
+
+/* ANIMAÇÕES (do animate.css) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+/* MEDIA QUERIES (RESPONSIVIDADE) */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul li {
+        margin: 0 10px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .veiculos-section h2, .about-section h2, .contact-section h2 {
+        font-size: 2rem;
+    }
+
+    .grid-carros {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .modal-buttons {
+        flex-direction: column; /* Botões um abaixo do outro */
+        gap: 10px;
+    }
+
+    .modal-buttons a {
+        width: 100%; /* Ocupa a largura total */
+        justify-content: center;
+    }
+
+    .modal-gallery .thumbnail {
+        width: 60px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .hero-section {
+        padding: 60px 10px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .veiculos-section h2, .about-section h2, .contact-section h2 {
+        font-size: 1.8rem;
+    }
+}
