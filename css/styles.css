@@ -29,15 +29,22 @@ header {
     top: 0;
     z-index: 1000; /* Garante que fique acima de outros elementos */
 }
-.logo img{
+.logo img {
     height: 100px; /* Altura da logo */
     width: auto; /* Mantém a proporção */
     margin-right: 20px; /* Espaço entre logo e título */
     display: block; /* Garante que a imagem seja exibida corretamente */
-    transition: transform 0.3s ease
+    transition: transform 0.3s ease;
+    text-decoration: none
+    
+
+    
 }
 .logo img:hover {
     transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+    filter: brightness(1.2); /* Aumenta o brilho da logo ao passar o mouse */
+    height: 150px;
+    width: auto; /* Mantém a proporção */
 }
 
 header .container {
@@ -493,4 +500,91 @@ footer p {
     .veiculos-section h2, .about-section h2, .contact-section h2 {
         font-size: 1.8rem;
     }
+}
+/* BARRA DE PESQUISA */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o input e o botão (se houver) */
+}
+
+#search-input {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 250px; /* Largura padrão */
+    transition: width 0.3s ease;
+}
+
+#search-input:focus {
+    width: 300px; /* Expande um pouco ao focar */
+    border-color: #e74c3c; /* Muda a borda ao focar */
+    outline: none; /* Remove a borda padrão do navegador */
+}
+
+/* Ajuste do cabeçalho para acomodar a barra de pesquisa em telas maiores */
+@media (min-width: 769px) {
+    header .container {
+        flex-wrap: wrap; /* Permite que os itens quebrem linha */
+        justify-content: space-between;
+        align-items: center;
+    }
+    header h1 {
+        margin-right: auto; /* Empurra o título para a esquerda, liberando espaço */
+    }
+    header nav {
+        order: 1; /* Garante que a navegação apareça antes da barra de pesquisa */
+        flex-basis: 100%; /* Ocupa a largura total para alinhar */
+        text-align: center;
+        margin-top: 10px;
+    }
+    .search-bar {
+        order: 2; /* Coloca a barra de pesquisa por último na linha */
+        margin-left: auto; /* Empurra a barra de pesquisa para a direita */
+    }
+}
+
+/* Ajuste da responsividade para telas menores */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    header h1 {
+        margin-bottom: 10px;
+    }
+    header nav {
+        margin-bottom: 15px;
+    }
+    #search-input {
+        width: 100%; /* Ocupa a largura total em telas menores */
+        max-width: 300px; /* Limita a largura máxima */
+    }
+}
+.testimonials-section {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+.testimonial-item {
+    background-color: #fff;
+    padding: 25px;
+    margin: 20px auto;
+    max-width: 700px;
+    border-left: 5px solid #e60000;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.testimonial-item p {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.testimonial-item span {
+    font-weight: 700;
+    color: #e60000;
 }

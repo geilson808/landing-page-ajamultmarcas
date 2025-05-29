@@ -4,45 +4,48 @@ const carModal = document.getElementById('car-modal');
 const modalDetails = document.getElementById('modal-details');
 const closeButton = document.querySelector('.close-button'); // Botão 'x' do modal
 
+// NOVO: Seleciona o input de pesquisa
+const searchInput = document.getElementById('search-input'); // Seleciona o input da barra de pesquisa
+
+// Variável para armazenar todos os veículos carregados inicialmente
+let allVehicles = []; // Esta variável vai guardar a lista completa
+
 // --- FUNÇÕES DE LÓGICA DO SITE ---
 
 // Função para carregar os dados dos veículos do arquivo JSON
 async function carregarVeiculos() {
     try {
-        // Tenta buscar o arquivo veiculos.json na pasta 'data'
         const response = await fetch('./data/veiculos.json');
-        // Verifica se a resposta da requisição foi bem-sucedida (status 200 OK, por exemplo)
         if (!response.ok) {
-            // Se a resposta não for OK (ex: arquivo não encontrado), lança um erro
             throw new Error(`HTTP error! status: ${response.status} - Caminho: ./data/veiculos.json`);
         }
-        // Converte a resposta (texto JSON) para um objeto JavaScript
         const veiculos = await response.json();
         
-        // Chama a função para exibir os carros na tela
-        renderizarCartoesDeCarros(veiculos);
+        // NOVO: Armazena a lista completa de veículos
+        allVehicles = veiculos; 
+
+        // Chama a função para exibir os carros na tela (todos, inicialmente)
+        renderizarCartoesDeCarros(allVehicles); // Usa allVehicles aqui
 
     } catch (error) {
-        // Captura e exibe qualquer erro que ocorra durante o carregamento
         console.error('Erro ao carregar os veículos:', error);
-        // Exibe uma mensagem de erro amigável na página
         carListingsContainer.innerHTML = '<p style="color: red; text-align: center;">Não foi possível carregar os veículos. Verifique o console para mais detalhes ou se o arquivo veiculos.json existe e está correto.</p>';
     }
 }
 
 // Função para criar e exibir os cartões de cada carro na página
+// AGORA RECEBE UMA LISTA (que pode ser filtrada)
 function renderizarCartoesDeCarros(listaDeCarros) {
-    // Limpa o conteúdo atual do container para evitar duplicações ao recarregar a lista
-    carListingsContainer.innerHTML = '';
+    carListingsContainer.innerHTML = ''; // Limpa o conteúdo atual
 
-    // Itera sobre cada objeto de carro na lista
+    if (listaDeCarros.length === 0) {
+        carListingsContainer.innerHTML = '<p style="text-align: center; font-size: 1.2em; color: #555;">Nenhum veículo encontrado para sua pesquisa.</p>';
+        return; // Sai da função se não houver carros
+    }
+
     listaDeCarros.forEach(carro => {
-        // Cria um novo elemento div para representar o cartão de cada carro
         const card = document.createElement('div');
-        card.classList.add('car-card'); // Adiciona uma classe para estilização via CSS
-
-        // Preenche o HTML interno do cartão com os dados do carro
-        // Observação: carro.imagens[0] pega a primeira imagem da lista para a capa do cartão
+        card.classList.add('car-card');
         card.innerHTML = `
             <img src="${carro.imagens[0]}" alt="${carro.marca} ${carro.modelo}">
             <h3>${carro.marca} ${carro.modelo}</h3>
@@ -50,19 +53,14 @@ function renderizarCartoesDeCarros(listaDeCarros) {
             <p class="preco">${carro.preco}</p>
             <button class="btn-ver-detalhes" data-id="${carro.id}">Ver Detalhes</button>
         `;
-        
-        // Adiciona o cartão criado ao container principal de listagens de carros no HTML
         carListingsContainer.appendChild(card);
     });
 
     // Adiciona ouvintes de evento de clique a TODOS os botões "Ver Detalhes" criados
     document.querySelectorAll('.btn-ver-detalhes').forEach(button => {
         button.addEventListener('click', (event) => {
-            // Pega o ID do carro do atributo 'data-id' do botão clicado
             const carroId = parseInt(event.target.dataset.id);
-            // Encontra o objeto do carro correspondente na lista original de veículos
-            const carroSelecionado = listaDeCarros.find(carro => carro.id === carroId);
-            // Chama a função para abrir o modal com os detalhes desse carro
+            const carroSelecionado = allVehicles.find(carro => carro.id === carroId); // Usa allVehicles para encontrar o carro
             abrirModalCarro(carroSelecionado);
         });
     });
@@ -70,21 +68,17 @@ function renderizarCartoesDeCarros(listaDeCarros) {
 
 // Função para abrir o modal com os detalhes de um carro específico
 function abrirModalCarro(carro) {
-    if (!carro) return; // Se por algum motivo o objeto carro não existir, não faz nada
+    if (!carro) return;
 
-    // Limpa qualquer conteúdo anterior do modal de detalhes
     modalDetails.innerHTML = '';
 
-    // Constrói a galeria de imagens para o modal
     let galleryHtml = '';
     if (carro.imagens && carro.imagens.length > 0) {
-        // A primeira imagem da lista será a imagem principal do modal
         galleryHtml = `
             <div class="modal-gallery">
                 <img src="${carro.imagens[0]}" alt="${carro.marca} ${carro.modelo}" class="main-modal-image">
                 <div class="thumbnail-images">
                     ${carro.imagens.map((imgSrc, index) => 
-                        // Cria miniaturas clicáveis para as outras imagens
                         `<img src="${imgSrc}" alt="${carro.modelo} ${index + 1}" class="thumbnail" data-index="${index}">`
                     ).join('')}
                 </div>
@@ -92,7 +86,6 @@ function abrirModalCarro(carro) {
         `;
     }
 
-    // Preenche o HTML do conteúdo do modal com todas as informações detalhadas do carro
     modalDetails.innerHTML = `
         ${galleryHtml}
         <h2>${carro.marca} ${carro.modelo}</h2>
@@ -113,32 +106,57 @@ function abrirModalCarro(carro) {
         </div>
     `;
 
-    // Adiciona funcionalidade para mudar a imagem principal na galeria do modal
-    // Se houver mais de uma imagem, habilita o clique nas miniaturas
     if (carro.imagens && carro.imagens.length > 1) {
         const mainModalImage = modalDetails.querySelector('.main-modal-image');
         modalDetails.querySelectorAll('.thumbnail').forEach(thumbnail => {
             thumbnail.addEventListener('click', (event) => {
-                // Altera a fonte da imagem principal para a fonte da miniatura clicada
                 mainModalImage.src = event.target.src;
-                // Opcional: Adicionar/remover classe 'active' para a miniatura selecionada
                 modalDetails.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
                 event.target.classList.add('active');
             });
         });
     }
 
-    // Exibe o modal e impede a rolagem da página principal
     carModal.style.display = 'block';
     document.body.style.overflow = 'hidden'; 
 }
 
 // Função para fechar o modal
 function fecharModalCarro() {
-    // Oculta o modal e restaura a rolagem da página principal
     carModal.style.display = 'none';
     document.body.style.overflow = 'auto'; 
 }
+
+// NOVO: Função para filtrar os veículos com base na pesquisa
+function filtrarVeiculos() {
+    const searchTerm = searchInput.value.toLowerCase(); // Pega o texto do input e converte para minúsculas
+
+    // Filtra a lista completa de veículos
+    const filteredVehicles = allVehicles.filter(carro => {
+        // Converte os campos relevantes do carro para minúsculas para comparação
+        const marca = carro.marca.toLowerCase();
+        const modelo = carro.modelo.toLowerCase();
+        const ano = carro.ano.toString().toLowerCase(); // Ano pode ser número, converte para string
+        const cor = carro.cor.toLowerCase();
+        const combustivel = carro.combustivel.toLowerCase();
+        const cambio = carro.cambio.toLowerCase();
+        const descricao = carro.descricaoDetalhada.toLowerCase();
+
+
+        // Retorna true se qualquer um dos campos contiver o termo de pesquisa
+        return marca.includes(searchTerm) ||
+               modelo.includes(searchTerm) ||
+               ano.includes(searchTerm) ||
+               cor.includes(searchTerm) ||
+               combustivel.includes(searchTerm) ||
+               cambio.includes(searchTerm) ||
+               descricao.includes(searchTerm);
+    });
+
+    // Renderiza a lista de carros filtrada
+    renderizarCartoesDeCarros(filteredVehicles);
+}
+
 
 // --- EVENT LISTENERS GLOBAIS ---
 
@@ -151,6 +169,11 @@ window.addEventListener('click', (event) => {
         fecharModalCarro();
     }
 });
+
+// NOVO: Adiciona ouvinte de evento para o input de pesquisa
+// A cada vez que o usuário digitar ou apagar algo, a função filtrarVeiculos será chamada
+searchInput.addEventListener('input', filtrarVeiculos);
+
 
 // --- INICIALIZAÇÃO ---
 

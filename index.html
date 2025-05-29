@@ -3,74 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJA Multimarcas - Carros à Venda</title>
-    
+    <title>AJA Multimarcas</title>
     <link rel="stylesheet" href="css/styles.css">
-    
-    <link rel="icon" href="img/favicon.png" type="image/png">
-
-   
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
 <body>
 
     <header>
         <div class="container">
-            <ul class="logo">
-                <li><img src="img/carros/logo-aja.png" alt="AJA Multimarcas Logo"></li>
-          
-            </ul>
-             
-            
+            <h1>AJA Multimarcas</h1>
             <nav>
                 <ul>
                     <li><a href="#veiculos">Veículos</a></li>
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#contato">Contato</a></li>
+                    <li> <a href="#vendas">Vendas</a></li>
                 </ul>
             </nav>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Pesquisar carros por marca, modelo, ano...">
+                </div>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <h2>Encontre o Carro dos Seus Sonhos</h2>
-                <p>Qualidade, confiança e os melhores preços em veículos seminovos.</p>
-                <a href="#veiculos" class="btn-primary">Ver Veículos</a>
-            </div>
-        </section>
+    <section class="hero-section">
+        <div class="hero-content animate__animated animate__fadeIn">
+            <h2>Encontre Seu Carro Ideal na AJA Multimarcas</h2>
+            <p>Qualidade, confiança e os melhores veículos novos e seminovos.</p>
+            <a href="#veiculos" class="btn-primary animate__animated animate__zoomIn">Ver Veículos</a>
+        </div>
+    </section>
 
-        <section id="veiculos" class="veiculos-section">
-            <div class="container">
-                <h2>Nossos Veículos Disponíveis</h2>
-                <div id="car-listings" class="grid-carros">
-                    </div>
-            </div>
-        </section>
+    <section id="veiculos" class="veiculos-section">
+        <div class="container">
+            <h2>Nossos Veículos Disponíveis</h2>
+            <div id="car-listings" class="grid-carros">
+                </div>
+        </div>
+    </section>
 
-        <section id="sobre" class="about-section">
-            <div class="container">
-                <h2>Sobre a AJA Multimarcas</h2> 
-                <p>Somos uma concessionária com anos de experiência no mercado, dedicados a oferecer veículos de qualidade e um atendimento excepcional. Nossa paixão é conectar pessoas aos carros perfeitos para suas vidas.</p>
-            </div>
-        </section>
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>A AJA Multimarcas tem mais de 20 anos de experiência no mercado automotivo, oferecendo os melhores veículos e um atendimento de excelência. Nossa missão é realizar o seu sonho de ter o carro perfeito, com transparência e segurança em todo o processo.</p>
+            <p>Trabalhamos com uma vasta gama de veículos seminovos de diversas marcas e modelos, todos inspecionados e com garantia de procedência. Venha nos visitar e comprove a qualidade dos nossos serviços!</p>
+        </div>
+    </section>
 
-        <section id="contato" class="contact-section">
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Tem alguma dúvida? Entre em contato conosco!</p>
+            <div class="contact-info">
+                <p><strong>Endereço:</strong> Rua da Concessionária, 123 - Bairro dos Carros, Cidade - Estado</p>
+                <p><strong>Telefone:</strong> (99) 9999-9999</p>
+                <p><strong>E-mail:</strong> contato@ajamalcas.com</p>
+                <p><strong>Horário de Funcionamento:</strong> Segunda a Sexta: 9h - 18h | Sábado: 9h - 13h</p>
+            </div>
+        </div>
+    </section>
+    <section id="vendas" class="contact-section">
+        <div class="container">
+            <h2>Vendas</h2>
+            <p>carro x valor y , fulano  </p>
+           
+        </div>
+        <div class="testimonials-section">
             <div class="container">
-                <h2>Entre em Contato</h2>
-                <p>Ficou interessado em algum veículo? Entre em contato conosco:</p>
-                <div class="contact-info">
-                    <p><strong>WhatsApp:</strong> (11) 99999-9999</p>
-                    <p><strong>Telefone:</strong> (11) 3333-4444</p>
-                    <p><strong>Endereço:</strong> Rua Itacoatiara, 367 - Cachoeirinha  - Amazonas/AM</p>
+                <h2>Depoimentos</h2>
+                <div class="testimonial-item">
+                    <p>"A AJA Multimarcas superou minhas expectativas! O atendimento foi excelente e encontrei o carro perfeito para mim."</p>
+                    <span>- Carlos Pereira</span>
+                </div>
+                <div class="testimonial-item">
+                    <p>"Recomendo a AJA Multimarcas a todos que buscam qualidade e confiança na compra de veículos seminovos."</p>
+                    <span>- Ana Costa</span>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+     
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 AJA Multimarcas. Todos os direitos reservados.</p> 
+            <p>&copy; 2025 AJA Multimarcas. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -83,6 +99,5 @@
     </div>
 
     <script src="js/script.js"></script>
-
 </body>
 </html>

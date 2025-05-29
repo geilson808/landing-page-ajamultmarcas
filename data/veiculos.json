@@ -57,5 +57,25 @@
     ],
     "contatoWhatsApp": "5511999993333",
     "contatoTelefone": "1133333333"
+  },
+  {
+    "id": 4,
+    "marca": "volkswagen",
+    "modelo": "polo GTS",
+    "ano": 2024,
+    "quilometragem": "5.000 km",
+    "cor": "Cinza Lunar",
+    "cambio": "Automático (CVT)",
+    "combustivel": "Híbrido (Flex)",
+    "preco": "R$ 170.000",
+    "descricaoDetalhada": "A mais nova tecnologia híbrida da Toyota. Consumo excelente, conforto superior e todos os itens de segurança da versão Altis. Estado de zero km.",
+    "imagens": [
+      "img/carros/polo-1.jpg",
+      "img/carros/polo-2.jpg",
+      "img/carros/polo-3.jpg",
+      "img/carros/polo-4.jpg"
+    ],
+    "contatoWhatsApp": "5511999993333",
+    "contatoTelefone": "1133333333"
   }
 ]
