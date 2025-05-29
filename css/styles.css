@@ -13,10 +13,33 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 0;
+    text-align: center;
+    justify-content: center;
+    
+}
+.container h1 {
+    background-color: yellow;
+    color: black;
+    border-radius: 80px;
+    padding: 1px 10px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+.container p {
+    display: inline-block;
+    color:black;
+    margin-top: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.aja p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
 }
 
 /* CABEÇALHO */
@@ -57,6 +80,8 @@ header h1 {
     margin: 0;
     font-size: 1.8rem;
     color: #e74c3c; /* Cor do título */
+    text-align: center;
+    font-weight: bold;
 }
 
 header nav ul {
@@ -66,6 +91,8 @@ header nav ul {
 header nav ul li {
     display: inline;
     margin-left: 20px;
+    font-size: 1.1rem;
+    position: relative; /* Necessário para o efeito de sublinhado */
 }
 
 header nav ul li a {
@@ -587,4 +614,75 @@ footer p {
 .testimonial-item span {
     font-weight: 700;
     color: #e60000;
+}
+/* Estilo para a seção de links sociais no Contato */
+.social-links {
+    margin-top: 30px;
+    border-top: 1px solid #eee; /* Uma linha divisória sutil */
+    padding-top: 20px;
+    text-align: center; /* Centraliza o texto */
+}
+
+.social-links p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.social-links ul {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centraliza os itens da lista */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas pequenas */
+    gap: 20px; /* Espaço entre os itens */
+}
+
+.social-links ul li a {
+    display: inline-block; /* Permite que a área de clique seja maior */
+    background-color: #3498db; /* Cor de fundo padrão */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links ul li a:hover {
+    transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cores específicas para cada link (opcional, se quiser diferenciar) */
+.social-links ul li a[href*="wa.me"] {
+    background-color: #25D366; /* WhatsApp Green */
+}
+
+.social-links ul li a[href*="facebook.com"] {
+    background-color: #3b5998; /* Facebook Blue */
+}
+
+.social-links ul li a[href*="t.me"] {
+    background-color: #0088cc; /* Telegram Blue */
+}
+
+.social-links ul li a[href*="wa.me"]:hover {
+    background-color: #1DA851;
+}
+.social-links ul li a[href*="facebook.com"]:hover {
+    background-color: #2d4373;
+}
+.social-links ul li a[href*="t.me"]:hover {
+    background-color: #006699;
+}
+
+
+/* Ajustes para telas menores */
+@media (max-width: 480px) {
+    .social-links ul {
+        flex-direction: column; /* Links um abaixo do outro em telas muito pequenas */
+        align-items: center;
+    }
 }
